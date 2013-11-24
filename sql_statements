@@ -1,0 +1,13 @@
+Select t.location, count(t.encounter_id) as count FROM transaction as t GROUP BY t.location
+
+Select t.operation, count(t.encounter_id)
+FROM transaction as t
+Where t.location = 'WOOD COUNTY'
+GROUP BY t.operation
+
+Select t.encounter_id, tt.operation_time FROM transaction as t, transaction_time as tt Where t.location = 'WOOD COUNTY' and t.encounter_id = tt.encounter_id
+
+Select p.first_name, p.last_name,count(p.first_name)
+FROM transaction as t, patient as p
+Where t.location = 'WOOD COUNTY' and p.puid = t.puid and t.operation = 'VERIFY'
+GROUP BY p.first_name, p.last_name
